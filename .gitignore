@@ -1,0 +1,57 @@
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+
+# Environment variables
+.env
+
+# Python egg files
+*.egg
+*.egg-info/
+dist/
+build/
+*.egg-info/
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Cache files
+*.cache
+*.mo
+*.pot
+
+# Unit test / coverage reports
+.coverage
+.tox/
+.nox/
+*.cover
+.hypothesis/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# macOS
+.DS_Store
+
+# Windows Thumbs.db
+Thumbs.db
+
+# Additional files
+*.bak

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Analyzer</title>
+    <link rel="stylesheet" type="text/css" href="">
+    <link rel="stylesheet" type="text/css" href="../static/style/index.css">
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="title">ALGORITHM ANALYZER</div>
+
+        <div class="upload-section">
+            <label for="dataset-upload" style="color: #f1faee;">UPLOAD THE DATASET HERE:</label>
+            <input type="file" id="dataset-upload" style="display: none;">
+            <button class="upload-btn" onclick="document.getElementById('dataset-upload').click()">UPLOAD</button>
+        </div>
+
+        <div class="algorithm-selection">
+            <label><input type="radio" name="algorithm" value="1"> ALGORITHM 1</label>
+            <label><input type="radio" name="algorithm" value="2"> ALGORITHM 2</label>
+            <label><input type="radio" name="algorithm" value="3"> ALGORITHM 3</label>
+            <label><input type="radio" name="algorithm" value="4"> ALGORITHM 4</label>
+        </div>
+
+        <button class="generate-btn">GENERATE AND DOWNLOAD</button>
+    </div>
+</body>
+</html>
