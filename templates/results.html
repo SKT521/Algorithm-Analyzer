@@ -1,17 +1,34 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Results</title>
+    <title>Result Graphs</title>
+    <link rel="stylesheet" href="../static/style/result.css">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> Optional CSS -->
 </head>
 <body>
-    <h1>Results</h1>
-    {% for result in results %}
-        <div>
-            <h2>Graph</h2>
-            <img src="{{ result }}" alt="Graph">
-        </div>
-    {% endfor %}
+    <h1>Generated Graphs</h1>
+
+    <!-- Display graphs -->
+    <div class="graph-container">
+        <h2>Graph Title 1</h2>
+        <img src="{{ url_for('static', filename='images/algorithm1_result.png') }}" alt="Graph 1">
+    </div>
+
+    <div class="graph-container">
+        <h2>Graph Title 2</h2>
+        <img src="{{ url_for('static', filename='images/algorithm2_result.png') }}" alt="Graph 2">
+    </div>
+    
+
+    <!-- Repeat for additional graphs as needed -->
+
+    <footer>
+        <p>&copy; 2023 Your Company Name</p>
+    </footer>
 </body>
 </html>
+

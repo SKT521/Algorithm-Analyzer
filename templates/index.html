@@ -4,15 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Files</title>
+    <link rel="stylesheet" href="../static/style/index.css"> <!-- Link to your CSS file -->
 </head>
 <body>
-    <h1>Upload CSV and Algorithms</h1>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <label for="csv_file">Upload CSV File:</label>
-        <input type="file" name="csv_file" required><br><br>
-        <label for="algorithm_files">Upload Algorithm Files (Python):</label>
-        <input type="file" name="algorithm_files" multiple required><br><br>
-        <input type="submit" value="Upload">
-    </form>
+    <div class="container">
+        <h1>Algorithm Analyzer</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="csv_file">Upload CSV File:</label>
+            <input type="file" name="csv_file" required><br><br>
+
+            <label for="algorithm_files">Upload Algorithm Files (Python):</label>
+            <input type="file" name="algorithm_files" multiple required><br><br>
+
+            <input type="submit" value="Upload">
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Your Company Name</p>
+    </footer>
 </body>
 </html>
