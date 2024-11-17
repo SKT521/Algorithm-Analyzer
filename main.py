@@ -1,55 +1,47 @@
-from flask import Flask, request, render_template, redirect, url_for, send_file
+from flask import Flask, render_template, request
 import pandas as pd
 import os
+import importlib.util
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = '/uploads'
+app.config['UPLOAD_FOLDER'] = 'uploads/'
 
-# Ensure the upload directory exists
-os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+# Ensure the uploads directory exists
+if not os.path.exists(app.config['UPLOAD_FOLDER']):
+    os.makedirs(app.config['UPLOAD_FOLDER'])
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
-    if request.method == 'POST':
-        # Check if the files were uploaded
-        if 'file1' not in request.files or 'file2' not in request.files:
-            return "Please upload both CSV files."
-        
-        file1 = request.files['file1']
-        file2 = request.files['file2']
-
-        if file1.filename == '' or file2.filename == '':
-            return "No selected file."
-
-        # Save files to the upload folder
-        file1_path = os.path.join(app.config['UPLOAD_FOLDER'], file1.filename)
-        file2_path = os.path.join(app.config['UPLOAD_FOLDER'], file2.filename)
-        file1.save(file1_path)
-        file2.save(file2_path)
-
-        # Process the CSVs with a custom algorithm
-        output_path = process_csvs(file1_path, file2_path)
-
-        # Send the output CSV file as a response
-        return send_file(output_path, as_attachment=True)
-
     return render_template('index.html')
 
-def process_csvs(file1_path, file2_path):
-    # Read the CSVs into DataFrames
-    df1 = pd.read_csv(file1_path)
-    df2 = pd.read_csv(file2_path)
+@app.route('/upload', methods=['POST'])
+def upload_files():
+    print("Upload route reached")
+    csv_file = request.files['csv_file']
+    algorithm_files = request.files.getlist('algorithm_files')
 
-    # Example algorithm: Merge the two CSVs on a common column (e.g., 'id')
-    result = pd.merge(df1, df2, on='id', how='outer')
+    if not csv_file or not algorithm_files:
+        return "No files uploaded.", 400
 
-    # Save the result to a new CSV
-    output_path = os.path.join(app.config['UPLOAD_FOLDER'], 'output.csv')
-    result.to_csv(output_path, index=False)
+    # Save the CSV file
+    csv_path = os.path.join(app.config['UPLOAD_FOLDER'], csv_file.filename)
+    csv_file.save(csv_path)
 
-    return output_path
+    results = []
+    for algorithm_file in algorithm_files:
+        algorithm_path = os.path.join(app.config['UPLOAD_FOLDER'], algorithm_file.filename)
+        algorithm_file.save(algorithm_path)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+        # Import the algorithm file as a module
+        spec = importlib.util.spec_from_file_location("algorithm_module", algorithm_path)
+        algorithm_module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(algorithm_module)
 
-    
+        df = pd.read_csv(csv_path)
+        result = algorithm_module.run(df)
+        results.append(result)
+
+    return render_template('results.html', results=results)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
