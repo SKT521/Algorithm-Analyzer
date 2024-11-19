@@ -1,3 +1,5 @@
+
+
 /* General Reset and Basic Styles */
 * {
     margin: 0;
@@ -10,28 +12,25 @@ body {
     background: linear-gradient(to right, #00c6ff, #0072ff); /* Gradient Background */
     color: #333;
     line-height: 1.6;
-    margin: 0;
-    min-height: 100vh; /* Full height */
+    padding: 20px;
+    height: 100vh; /* Full height */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Push content to the top */
-    padding: 20px;
 }
 
 .main-heading {
     font-size: 2rem;
     color: #fff;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-align: center;
-    word-wrap: break-word; /* Prevent text overflow */
 }
 
 /* Wrapper for the two sections */
 .content-wrapper {
     display: flex;
-    flex-wrap: wrap; /* Allows wrapping for smaller screens */
-    justify-content: center; /* Center horizontally */
+    justify-content: space-between;
+    align-items: flex-start;
     gap: 20px;
     width: 100%;
     max-width: 1200px;
@@ -43,13 +42,15 @@ body {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    flex: 1 1 500px; /* Box grows and shrinks to fit available space */
-    max-width: 500px; /* Ensures consistent size */
-    text-align: left;
-    word-wrap: break-word; /* Prevent overflow for long text or code */
+    width: 100%;
+    max-width: 550px;
 }
 
 /* Left box styles */
+.instructions-box {
+    text-align: left;
+}
+
 .instructions-box h2 {
     margin-bottom: 15px;
     color: #2c3e50;
@@ -66,11 +67,10 @@ body {
 
 .instructions-box code {
     background-color: #f8f9fa;
-    padding: 4px 8px;
+    padding: 2px 5px;
     border-radius: 4px;
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.9rem;
-    word-break: break-word; /* Ensures long code blocks wrap */
 }
 
 /* Right box styles */
@@ -115,35 +115,24 @@ form input[type="submit"]:hover {
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
-    .content-wrapper {
-        justify-content: center; /* Center align boxes */
-    }
-
-    .box {
-        flex: 1 1 48%; /* Use almost half width on medium screens */
-    }
-}
-
 @media (max-width: 768px) {
     .content-wrapper {
-        flex-direction: column; /* Stack boxes vertically */
+        flex-direction: column;
         align-items: center;
     }
 
     .box {
-        flex: 1 1 100%; /* Full width for smaller screens */
-        max-width: 100%; /* Prevent overflow */
+        max-width: 100%;
+    }
+
+    .main-heading {
+        font-size: 1.8rem;
     }
 }
 
 @media (max-width: 480px) {
     .main-heading {
-        font-size: 1.6rem; /* Reduce heading size for mobile */
-    }
-
-    .box {
-        padding: 20px; /* Reduce padding on smaller screens */
+        font-size: 1.6rem;
     }
 
     form input[type="submit"] {
