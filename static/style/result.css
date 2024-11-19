@@ -1,97 +1,146 @@
+
+
 /* General Reset and Basic Styles */
 * {
-    margin: 0;
-    padding: 0;
+    margin: 10px;
+    padding: 10px;
     box-sizing: border-box;
 }
 
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #00c6ff, #0072ff); /* Same Gradient Background */
+    background: linear-gradient(to right, #00c6ff, #0072ff);
     color: #333;
     line-height: 1.6;
-    padding: 20px;
-}
-
-h1 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 40px;
-    color: #2c3e50;
-}
-
-/* Main Content Container */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Graph Container */
-.graph-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    flex: 1; /* Allow it to grow to fill space */
-    margin: 10px; /* Add space between the graphs */
-}
-
-/* Display the graph containers side by side */
-.graph-wrapper {
+    min-height: 100vh;
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
 }
 
-/* Styling for each graph inside the container */
-.graph-container h2 {
-    font-size: 1.5rem;
+/* Container Styles */
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Full width */
+    max-width: 100%; /* Ensure it spans the entire width */
+    margin: 20px 0; /* Space from the top and bottom */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    gap: 20px; /* Space between elements */
+}
+
+/* Header Styles */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
     color: #2c3e50;
-    margin-bottom: 15px;
+    text-align: center;
+}
+
+h2 {
+    color: #495057;
+    margin: 20px 0;
+    text-align: center;
+}
+
+/* Graph Container 
+.graph-container {
+    text-align: center;
+    width: 100%; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    flex-direction: column;
+}*/
+.graph-container {
+    text-align: center;
+    width: 100%; /* Ensure full-width responsiveness */
+    display: flex;
+    justify-content: center; /* Center the graph horizontally */
+    align-items: center;
+    flex-direction: column;
+    margin: 20px; /* Adds space around the container */
+    padding: 20px; /* Adds space inside the container */
+    background-color: #f9f9f9; /* Optional: Light background for better separation */
+    border-radius: 10px; /* Matches the rounded style theme */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Optional: Subtle shadow */
 }
 
 .graph-container img {
-    width: 100%;
-    max-width: 500px; /* Restrict width of images */
-    display: block;
-    margin: 0 auto;
-    border-radius: 8px;
+    max-width: 90%; /* Keep the graph within 90% width for better visuals */
+    height: auto;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Footer Styling */
-footer {
+/* Table Styles */
+.table {
+    width: 90%; /* Reduce table width slightly for better appearance */
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+.table th, .table td {
+    padding: 12px;
     text-align: center;
-    margin-top: 40px;
-    color: #777;
+    border: 1px solid #dee2e6;
 }
 
-footer p {
-    font-size: 1rem;
+.table th {
+    background-color: #007bff;
+    color: white;
+    text-transform: uppercase;
 }
 
-/* Responsive Design */
+.table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+/* Responsive Styles */
 @media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
     h1 {
         font-size: 2rem;
     }
 
-    .graph-wrapper {
-        flex-direction: column;
-        align-items: center;
+    .table {
+        font-size: 0.9rem;
     }
 
-    .graph-container {
-        width: 100%;
+    .graph-container img {
+        max-width: 95%; /* Slightly larger graphs on smaller screens */
+        height: auto;
     }
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+
     h1 {
         font-size: 1.8rem;
     }
 
-    .graph-container h2 {
-        font-size: 1.2rem;
+    .table {
+        font-size: 0.8rem;
+    }
+
+    .graph-container img {
+        margin: 0 auto;
     }
 }
+

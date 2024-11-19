@@ -1,34 +1,79 @@
-
-
-<!DOCTYPE html>
+ <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Result Graphs</title>
     <link rel="stylesheet" href="../static/style/result.css">
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> Optional CSS -->
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> Optional CSS 
 </head>
 <body>
     <h1>Generated Graphs</h1>
 
-    <!-- Display graphs -->
     <div class="graph-container">
-        <h2>Graph Title 1</h2>
+        <h2>Graph </h2>
         <img src="{{ url_for('static', filename='images/algorithm1_result.png') }}" alt="Graph 1">
     </div>
 
     <div class="graph-container">
-        <h2>Graph Title 2</h2>
+        <h2>Graph </h2>
         <img src="{{ url_for('static', filename='images/algorithm2_result.png') }}" alt="Graph 2">
     </div>
     
 
-    <!-- Repeat for additional graphs as needed -->
+    Repeat for additional graphs as needed 
 
-    <footer>
-        <p>&copy; 2023 Your Company Name</p>
-    </footer>
+</body>
+</html> --> 
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/style/result.css">
+</head>
+<body>
+    <div class="container">
+        <!-- <h1>Results</h1>
+        
+        <h2>Generated Graphs</h2>
+        <ul>
+            {% for result in results %}
+                <li><img src="{{ url_for('uploaded_file', filename=result) }}" alt="Generated Graph"></li>
+            {% endfor %}
+        </ul> -->
+
+        <h2>Data Points from Uploaded File</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Index</th>
+                    <th>X</th>
+                    <th>Y</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ row['x'] }}</td>
+                        <td>{{ row['y'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+         <!-- Display graphs -->
+        </div>
+        <div class="graph-container">
+            <h2>Graph 1</h2>
+            <img src="{{ url_for('static', filename='images/algorithm1_result.png') }}" alt="Graph 1">
+        </div>
+
+        <div class="graph-container">
+            <h2>Graph 2</h2>
+            <img src="{{ url_for('static', filename='images/algorithm2_result.png') }}" alt="Graph 2">
+        </div> 
 </body>
 </html>
-
